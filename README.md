@@ -23,7 +23,7 @@ val ftCount: Future[Int] = "SELECT count(*) FROM users".sql.int.scalar
 
 You only need to specify the postgres type and the library will take care of the type it needs to cast the driver's output to.
 ```scala
-val ftTime: [LocalDateTime] = 
+val ftTime: Future[LocalDateTime] = 
 	sql"SELECT stamp FROM users WHERE id = 1"
 		.map { row => row(TimeStamp)("date") }
 		.scalar
